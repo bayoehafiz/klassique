@@ -4,13 +4,13 @@
 $SITE_NAME 			= "Klassique";
 
 
-$SITE_URL  			= "http://localhost/web";
+$SITE_URL  			= "http://new.Klassiqueuniform.com/web/";
 
 
 $HOME_URL  			= $SITE_URL."index";
 
 
-$WEBSITE_NAME 		= "Test 123"; //add by RNT 27 nov 15
+$WEBSITE_NAME 		= "http://new.Klassiqueuniform.com/"; //add by RNT 27 nov 15
 
 
 
