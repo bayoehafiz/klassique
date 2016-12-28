@@ -21,7 +21,7 @@ if(isset($arr_url[3])){
 
 $GLOBALS['curr_lang'] = $curr_lang;
 $GLOBALS['curr_page'] = $curr_page;
-$workdir = '/web/';
+$workdir = '/';
 
 if($curr_lang == 'id'){
 	$display_lang = "BAHASA INDONESIA";

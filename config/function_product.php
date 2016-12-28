@@ -10,7 +10,7 @@ function product_list(){
                             <span class="pb-best">Best</span>
                         </div><!-- .product-bage -->
                         <div class="shop-loop-thumbnail">
-                            <a href="product-detail.php"><img width="300" height="350" src="/web/images/klassique/product/thumb1.png" alt="Product-1"/></a>
+                            <a href="product-detail.php"><img width="300" height="350" src="/images/klassique/product/thumb1.png" alt="Product-1"/></a>
                         </div>
                     </div>
                 </div>

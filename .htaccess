@@ -2,84 +2,84 @@ RewriteEngine On
 Options +FollowSymLinks
 
 # static
-RewriteRule ^$ 														web/index.php
-RewriteRule ^(id|en)/index/?$	 									web/index.php
-RewriteRule ^(id|en)/about/?$	 									web/about.php
-RewriteRule ^(id|en)/contact/?$	 									web/contact.php
-RewriteRule ^(id|en)/faq/?$	 										web/faq.php
-RewriteRule ^(id|en)/testimonial/?$	 								web/testimonial.php
-RewriteRule ^(id|en)/privacy-policy/?$	 							web/privacy-policy.php
-RewriteRule ^(id|en)/cart/?$	 									web/cart.php
-RewriteRule ^(id|en)/address-book/?$	 							web/address-book.php
-RewriteRule ^(id|en)/change-password/?$	 							web/change-password.php
-RewriteRule ^(id|en)/checkout/?$	 								web/checkout.php
-RewriteRule ^(id|en)/order-history/?$	 							web/order-history.php?halaman=1
-RewriteRule ^(id|en)/order-history/([^/]*)/?$	 					web/order-history.php?halaman=$2
-RewriteRule ^(id|en)/payment-fail/?$	 							web/payment-fail.php
-RewriteRule ^(id|en)/custom-order/?$	 							web/custom-order.php
-RewriteRule ^(id|en)/measurement-guide/?$	 						web/measurement-guide.php
-RewriteRule ^(id|en)/how-to-buy/?$	 								web/how-to-buy.php
-RewriteRule ^(id|en)/return-policy/?$	 							web/return-policy.php
-RewriteRule ^(id|en)/terms-and-conditions/?$	 					web/terms-and-conditions.php
-RewriteRule ^(id|en)/order-complete/([^/]*)/?$						web/order-complete.php?tokenpay=$2
-RewriteRule ^(id|en)/payment-complete/([^/]*)/?$ 					web/payment-complete.php?tokenpay=$2
-RewriteRule ^(id|en)/restore-password/([^/]*)/?$	 				web/restore-password.php?token_reset=$2
+RewriteRule ^$ 														index.php
+RewriteRule ^(id|en)/index/?$	 									index.php
+RewriteRule ^(id|en)/about/?$	 									about.php
+RewriteRule ^(id|en)/contact/?$	 									contact.php
+RewriteRule ^(id|en)/faq/?$	 										faq.php
+RewriteRule ^(id|en)/testimonial/?$	 								testimonial.php
+RewriteRule ^(id|en)/privacy-policy/?$	 							privacy-policy.php
+RewriteRule ^(id|en)/cart/?$	 									cart.php
+RewriteRule ^(id|en)/address-book/?$	 							address-book.php
+RewriteRule ^(id|en)/change-password/?$	 							change-password.php
+RewriteRule ^(id|en)/checkout/?$	 								checkout.php
+RewriteRule ^(id|en)/order-history/?$	 							order-history.php?halaman=1
+RewriteRule ^(id|en)/order-history/([^/]*)/?$	 					order-history.php?halaman=$2
+RewriteRule ^(id|en)/payment-fail/?$	 							payment-fail.php
+RewriteRule ^(id|en)/custom-order/?$	 							custom-order.php
+RewriteRule ^(id|en)/measurement-guide/?$	 						measurement-guide.php
+RewriteRule ^(id|en)/how-to-buy/?$	 								how-to-buy.php
+RewriteRule ^(id|en)/return-policy/?$	 							return-policy.php
+RewriteRule ^(id|en)/terms-and-conditions/?$	 					terms-and-conditions.php
+RewriteRule ^(id|en)/order-complete/([^/]*)/?$						order-complete.php?tokenpay=$2
+RewriteRule ^(id|en)/payment-complete/([^/]*)/?$ 					payment-complete.php?tokenpay=$2
+RewriteRule ^(id|en)/restore-password/([^/]*)/?$	 				restore-password.php?token_reset=$2
 
 # member login
-RewriteRule ^(id|en)/edit-profile/?$	 							web/edit-profile.php
-RewriteRule ^(id|en)/edit-profile/checkout?$	 					web/edit-profile.php?from=checkout
-RewriteRule ^(id|en)/change-password/?$	 							web/change-password.php
-RewriteRule ^(id|en)/address-book/?$	 							web/address-book.php
-RewriteRule ^(id|en)/order-history/?$	 							web/order-history.php
+RewriteRule ^(id|en)/edit-profile/?$	 							edit-profile.php
+RewriteRule ^(id|en)/edit-profile/checkout?$	 					edit-profile.php?from=checkout
+RewriteRule ^(id|en)/change-password/?$	 							change-password.php
+RewriteRule ^(id|en)/address-book/?$	 							address-book.php
+RewriteRule ^(id|en)/order-history/?$	 							order-history.php
 
 # proses interaksi member
-RewriteRule ^(id|en)/member-review/?$	 							web/process/member_review.php
-RewriteRule ^(id|en)/activation/([^/]*)/?$ 							web/process/member_activation.php?token=$2
-RewriteRule ^(id|en)/member-login/?$	 							web/process/member_login.php
-RewriteRule ^(id|en)/member-register/?$	 							web/process/member_register.php
-RewriteRule ^(id|en)/member-editdata/?$	 							web/process/member_editdata.php
-RewriteRule ^(id|en)/member-change-password/?$						web/process/member_change_password.php
-RewriteRule ^(id|en)/member-lost-password/?$						web/process/member_lost_password.php
-RewriteRule ^(id|en)/member-add_addressbook/?$						web/process/member_add_addressbook.php
-RewriteRule ^(id|en)/member-edit_addressbook/?$						web/process/member_edit_addressbook.php
-RewriteRule ^(id|en)/member-confirmpayment/?$			 			web/process/member_confirm_payment.php
-RewriteRule ^(id|en)/member-restore-password/?$			 			web/process/member_restore_password.php
-RewriteRule ^(id|en)/logout/?$			 							web/process/member_logout.php
+RewriteRule ^(id|en)/member-review/?$	 							process/member_review.php
+RewriteRule ^(id|en)/activation/([^/]*)/?$ 							process/member_activation.php?token=$2
+RewriteRule ^(id|en)/member-login/?$	 							process/member_login.php
+RewriteRule ^(id|en)/member-register/?$	 							process/member_register.php
+RewriteRule ^(id|en)/member-editdata/?$	 							process/member_editdata.php
+RewriteRule ^(id|en)/member-change-password/?$						process/member_change_password.php
+RewriteRule ^(id|en)/member-lost-password/?$						process/member_lost_password.php
+RewriteRule ^(id|en)/member-add_addressbook/?$						process/member_add_addressbook.php
+RewriteRule ^(id|en)/member-edit_addressbook/?$						process/member_edit_addressbook.php
+RewriteRule ^(id|en)/member-confirmpayment/?$			 			process/member_confirm_payment.php
+RewriteRule ^(id|en)/member-restore-password/?$			 			process/member_restore_password.php
+RewriteRule ^(id|en)/logout/?$			 							process/member_logout.php
 
 # product
-RewriteRule ^(id|en)/product-list/?$	 							web/product-list.php
-RewriteRule ^(id|en)/product-detail/([^/]*)/?$						web/product-detail.php?urlpage=$2
+RewriteRule ^(id|en)/product-list/?$	 							product-list.php
+RewriteRule ^(id|en)/product-detail/([^/]*)/?$						product-detail.php?urlpage=$2
 
 # news
-RewriteRule ^(id|en)/news/?$	 									web/news.php
-RewriteRule ^(id|en)/news/([^/]*)/?$	 							web/news.php?halaman=$2
-RewriteRule ^(id|en)/news-detail/([^/]*)/?$							web/news-detail.php?urlpage=$2
-RewriteRule ^(id|en)/news-detail/([^/]*)/?$							web/news-detail.php?urlpage=$2
+RewriteRule ^(id|en)/news/?$	 									news.php
+RewriteRule ^(id|en)/news/([^/]*)/?$	 							news.php?halaman=$2
+RewriteRule ^(id|en)/news-detail/([^/]*)/?$							news-detail.php?urlpage=$2
+RewriteRule ^(id|en)/news-detail/([^/]*)/?$							news-detail.php?urlpage=$2
 
 # proses
-RewriteRule ^(id|en)/contact_us/?$			 						web/process/contact_us.php
-RewriteRule ^(id|en)/email_subscribe/?$		 						web/process/email_subscribe.php
-RewriteRule ^(id|en)/register/?$									web/process/member_register.php
-RewriteRule ^(id|en)/login/?$										web/process/member_login.php
-RewriteRule ^(id|en)/login-facebook/?$								web/process/member_login_facebook.php
-RewriteRule ^(id|en)/email_subscribe/?$								web/process/member_email_subscribe.php
-RewriteRule ^(id|en)/saveorder/?$									web/shop/saveorder.php
+RewriteRule ^(id|en)/contact_us/?$			 						process/contact_us.php
+RewriteRule ^(id|en)/email_subscribe/?$		 						process/email_subscribe.php
+RewriteRule ^(id|en)/register/?$									process/member_register.php
+RewriteRule ^(id|en)/login/?$										process/member_login.php
+RewriteRule ^(id|en)/login-facebook/?$								process/member_login_facebook.php
+RewriteRule ^(id|en)/email_subscribe/?$								process/member_email_subscribe.php
+RewriteRule ^(id|en)/saveorder/?$									shop/saveorder.php
 
 # Shopping
-RewriteRule ^shopcart-ajax/([^/]*)?$								web/shop/shopcart.php?act=$1
+RewriteRule ^shopcart-ajax/([^/]*)?$								shop/shopcart.php?act=$1
 
 # Admin page
-RewriteRule ^admin/?$ 												web/admin/index.php
+RewriteRule ^admin/?$ 												admin/index.php
 
 # veritrans
-RewriteRule ^veritrans-step2/?$ 							  		web/veritrans/index.php
-RewriteRule ^(id|en)/confirmation-finish/?$					 		  		web/vt_payment-veritrans-success.php
-RewriteRule ^(id|en)/confirmation-back/?$					 		  		web/vt_payment-veritrans-error.php
-RewriteRule ^(id|en)/confirmation-error/?$					 		  		web/vt_payment-veritrans-error.php
-RewriteRule ^(id|en)/veritrans-notify/?$					 		  		web/vt_payment-veritrans-success-backend.php
+RewriteRule ^veritrans-step2/?$ 							  		veritrans/index.php
+RewriteRule ^(id|en)/confirmation-finish/?$					 		  		vt_payment-veritrans-success.php
+RewriteRule ^(id|en)/confirmation-back/?$					 		  		vt_payment-veritrans-error.php
+RewriteRule ^(id|en)/confirmation-error/?$					 		  		vt_payment-veritrans-error.php
+RewriteRule ^(id|en)/veritrans-notify/?$					 		  		vt_payment-veritrans-success-backend.php
 
 
-ErrorDocument 404    												/web/index.php
+ErrorDocument 404    												/index.php
 
 AddType image/svg+xml svg svgz
 AddType application/octet-stream .pdf

@@ -4,7 +4,7 @@
 $SITE_NAME 			= "Klassique";
 
 
-$SITE_URL  			= "http://localhost/web";
+$SITE_URL  			= "http://klassique.colorblindlabs.com/";
 
 
 $HOME_URL  			= $SITE_URL."index";
