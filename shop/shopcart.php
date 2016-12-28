@@ -461,7 +461,7 @@ function cek_detail_fit(){
 					echo'
 					<div class="'.$selected.' select-option swatch-wrapper size_select_'.$value_s['id'].'" id="'.$value_s['id'].'">
 						<a href="#" title="Extra Large" id='.($value_s['id']).' class="swatch-anchor get_size">
-							<img src="/web/images/sizes/'.get_size_from_id($value_s['size'],"product_size").'.jpg" alt="thumbnail" width="35" height="35"/>
+							<img src="/images/sizes/'.get_size_from_id($value_s['size'],"product_size").'.jpg" alt="thumbnail" width="35" height="35"/>
 						</a>
 					</div>
 					';	

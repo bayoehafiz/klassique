@@ -1,832 +1,863 @@
-
-
 $(document).ready(function() { // execute when window open
 
 
 
-	function convertToRupiah(angka){
+    function convertToRupiah(angka) {
 
-		var rupiah = '';
+        var rupiah = '';
 
-		var angkarev = angka.toString().split('').reverse().join('');
+        var angkarev = angka.toString().split('').reverse().join('');
 
-		for(var i = 0; i < angkarev.length; i++) if(i%3 == 0) rupiah += angkarev.substr(i,3)+'.';
+        for (var i = 0; i < angkarev.length; i++)
+            if (i % 3 == 0) rupiah += angkarev.substr(i, 3) + '.';
 
-		return rupiah.split('',rupiah.length-1).reverse().join('');
+        return rupiah.split('', rupiah.length - 1).reverse().join('');
 
-	}
+    }
 
 
 
-	$('#button_track').click(function() {
+    $('#button_track').click(function() {
 
-		// tracking Order
+        // tracking Order
 
-		var idorder = $('#track_idorder').attr("value");
+        var idorder = $('#track_idorder').attr("value");
 
-		if(idorder.length > 1){
+        if (idorder.length > 1) {
 
-			$.ajax({
+            $.ajax({
 
-				type	: "POST",
+                type: "POST",
 
-				url		: "/shopcart-ajax/track_order",
+                url: "/shopcart-ajax/track_order",
 
-				data	: {"orderid": idorder},
+                data: {
+                    "orderid": idorder
+                },
 
-				beforeSend:  function() {
+                beforeSend: function() {
 
 
 
-				},
+                },
 
-				success: function(html){
+                success: function(html) {
 
-					$('#return_track').fadeOut(100).html(html).fadeIn(500);
+                    $('#return_track').fadeOut(100).html(html).fadeIn(500);
 
-				}
+                }
 
-			});
+            });
 
-		}
+        }
 
-	});
+    });
 
 
 
-	$('.check_cheked').click(function(e) {
+    $('.check_cheked').click(function(e) {
 
-		//alert(a);
+        //alert(a);
 
-		var total = 0;
+        var total = 0;
 
-		$('.check_cheked').each(function(){
+        $('.check_cheked').each(function() {
 
-			var a = parseInt($(this).attr('nominal'));
+            var a = parseInt($(this).attr('nominal'));
 
-			if($(this).is(":checked")) {
+            if ($(this).is(":checked")) {
 
-				total = total + a;
+                total = total + a;
 
-			}
+            }
 
-		});
+        });
 
 
 
-		//alert(total);
+        //alert(total);
 
-		$("#total_biaya_tambahan").html("IDR "+convertToRupiah(total));
+        $("#total_biaya_tambahan").html("IDR " + convertToRupiah(total));
 
-	});
+    });
 
 
 
 
 
-	/*product_detail*/
+    /*product_detail*/
 
-	$('#cek_detail_gender').change(function(e) {
+    $('#cek_detail_gender').change(function(e) {
 
-		var id_product = $('#id_product').attr('value');
+        var id_product = $('#id_product').attr('value');
 
-		var gender = $(this).attr('value');
+        var gender = $(this).attr('value');
 
-		$.ajax({
+        $.ajax({
 
-			type	: "POST",
+            type: "POST",
 
-			url		: "/shopcart-ajax/cek_detail_gender",
+            url: "/shopcart-ajax/cek_detail_gender",
 
-			data	: {"gender": gender,"id_product":id_product},
+            data: {
+                "gender": gender,
+                "id_product": id_product
+            },
 
-			beforeSend:  function() {
+            beforeSend: function() {
 
-				//$('.loading').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
+                //$('.loading').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
 
-			},
+            },
 
-			success: function(html){//html = the server response html code
+            success: function(html) { //html = the server response html code
 
-				$('#filter_size_prod_detail').hide();
+                $('#filter_size_prod_detail').hide();
 
-				$('.filter_type').html(html);
+                $('.filter_type').html(html);
 
-			}
+            }
 
-		});
+        });
 
-		e.preventDefault();
+        e.preventDefault();
 
-	});
+    });
 
 
 
-	$('#cek_detail_fit').change(function(e) {
+    $('#cek_detail_fit').change(function(e) {
 
-		var id_product = $('#id_product').attr('value');
+        var id_product = $('#id_product').attr('value');
 
-		var gender = $('#cek_detail_gender').val();
+        var gender = $('#cek_detail_gender').val();
 
-		var fit_type = $(this).attr('value');
+        var fit_type = $(this).attr('value');
 
-		var curr_lang = $('#language_current').attr('lang');
+        var curr_lang = $('#language_current').attr('lang');
 
-		var display_lang_size = $('#display_lang_size').attr('lang');
+        var display_lang_size = $('#display_lang_size').attr('lang');
 
-		
 
-		$.ajax({
 
-			type	: "POST",
+        $.ajax({
 
-			url		: "/shopcart-ajax/cek_detail_fit",
+            type: "POST",
 
-			data	: {"gender": gender,"id_product":id_product,"fit_type": fit_type,"curr_lang": curr_lang,"display_lang_size":display_lang_size},
+            url: "/shopcart-ajax/cek_detail_fit",
 
-			beforeSend:  function() {
+            data: {
+                "gender": gender,
+                "id_product": id_product,
+                "fit_type": fit_type,
+                "curr_lang": curr_lang,
+                "display_lang_size": display_lang_size
+            },
 
-				//$('.loading2').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
+            beforeSend: function() {
 
-			},
+                //$('.loading2').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
 
-			success: function(html){//html = the server response html code
+            },
 
-				$('.filter_size').html(html);
+            success: function(html) { //html = the server response html code
 
-				//get_selected_id_detail(id_product,gender,fit_type);
+                $('.filter_size').html(html);
 
-				$(".addtocart").prop('enabled', true);
+                //get_selected_id_detail(id_product,gender,fit_type);
 
-				$('#filter_size_prod_detail').show();
+                $(".addtocart").prop('enabled', true);
 
-			}
+                $('#filter_size_prod_detail').show();
 
-		});
+            }
 
-		e.preventDefault();
+        });
 
-	});
+        e.preventDefault();
 
+    });
 
 
-	function get_selected_id_detail(id_product,gender,fit_type){
 
-		$.ajax({
+    function get_selected_id_detail(id_product, gender, fit_type) {
 
-			type	: "POST",
+        $.ajax({
 
-			url		: "/shopcart-ajax/get_id_product_detail",
+            type: "POST",
 
-			data	: {"id_product": id_product,"gender":gender,"fit_type":fit_type},
+            url: "/shopcart-ajax/get_id_product_detail",
 
-			beforeSend:  function() {
+            data: {
+                "id_product": id_product,
+                "gender": gender,
+                "fit_type": fit_type
+            },
 
-				//$('.loading2').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
+            beforeSend: function() {
 
-			},
+                //$('.loading2').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
 
-			success: function(html){
+            },
 
-				// ini id detail product nya
+            success: function(html) {
 
-				get_stock_tersedia(html);
+                // ini id detail product nya
 
-				$('#ukuran_size').val(parseInt(html));
+                get_stock_tersedia(html);
 
-			}
+                $('#ukuran_size').val(parseInt(html));
 
-		});
+            }
 
-	}
+        });
 
+    }
 
 
-	function get_stock_tersedia(id_product_detail){
 
-		var language_current = $('#language_current').attr('lang');
+    function get_stock_tersedia(id_product_detail) {
 
+        var language_current = $('#language_current').attr('lang');
 
 
-		$.ajax({
 
-			type	: "POST",
+        $.ajax({
 
-			url		: "/shopcart-ajax/get_stock_tersedia",
+            type: "POST",
 
-			data	: {"id_product_detail": id_product_detail},
+            url: "/shopcart-ajax/get_stock_tersedia",
 
-			beforeSend:  function() {
+            data: {
+                "id_product_detail": id_product_detail
+            },
 
-				//$('.loading2').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
+            beforeSend: function() {
 
-			},
+                //$('.loading2').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
 
-			success: function(html){
+            },
 
-				var stok_tersedia = parseInt(html);
+            success: function(html) {
 
+                var stok_tersedia = parseInt(html);
 
 
-				if(stok_tersedia > 0){
 
-					//$('#max_value_buy').attr('max',parseInt(html));
+                if (stok_tersedia > 0) {
 
-					$(".addtocart").prop('disabled', false);
+                    //$('#max_value_buy').attr('max',parseInt(html));
 
-					$("#custom_checkbox_bordir").show();
+                    $(".addtocart").prop('disabled', false);
 
-					$("#filter_size_prod_detail").show();
+                    $("#custom_checkbox_bordir").show();
 
-					$("#max_value_buy").show();
+                    $("#filter_size_prod_detail").show();
 
-					if(language_current == 'id'){
+                    $("#max_value_buy").show();
 
-						$(".addtocart").css("border-color", "black").css("color", "black").html("Tambahkan ke Keranjang");
+                    if (language_current == 'id') {
 
-					}else{
+                        $(".addtocart").css("border-color", "black").css("color", "black").html("Tambahkan ke Keranjang");
 
-						$(".addtocart").css("border-color", "black").css("color", "black").html("Add to cart");
+                    } else {
 
-					}
+                        $(".addtocart").css("border-color", "black").css("color", "black").html("Add to cart");
 
-				}else{
+                    }
 
-					$(".addtocart").prop('disabled', true);
+                } else {
 
-					$("#custom_checkbox_bordir").hide();
+                    $(".addtocart").prop('disabled', true);
 
-					$("#filter_size_prod_detail").hide();
+                    $("#custom_checkbox_bordir").hide();
 
-					$("#max_value_buy").hide();
+                    $("#filter_size_prod_detail").hide();
 
-					if(language_current == 'id'){
+                    $("#max_value_buy").hide();
 
-						$(".addtocart").css("border-color", "red").css("color", "red").html("Stok Habis");
+                    if (language_current == 'id') {
 
-					}else{
+                        $(".addtocart").css("border-color", "red").css("color", "red").html("Stok Habis");
 
-						$(".addtocart").css("border-color", "red").css("color", "red").html("Out of Stock");
+                    } else {
 
-					}
+                        $(".addtocart").css("border-color", "red").css("color", "red").html("Out of Stock");
 
-				}
+                    }
 
-			}
+                }
 
-		});
+            }
 
-	}
+        });
 
+    }
 
 
-	$("#add_voucher").click(function(){
 
-		var code = $("#voucher_code").val();
+    $("#add_voucher").click(function() {
 
-		$.ajax({
+        var code = $("#voucher_code").val();
 
-			type	: "POST",
+        $.ajax({
 
-			url		: "/shopcart-ajax/use_voucher",
+            type: "POST",
 
-			data	: {"code": code},
+            url: "/shopcart-ajax/use_voucher",
 
-			beforeSend:  function() {
+            data: {
+                "code": code
+            },
 
-				//$('.loading2').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
+            beforeSend: function() {
 
-			},
+                //$('.loading2').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
 
-			success: function(html){//html = the server response html code
+            },
 
-				//total_item(); 
+            success: function(html) { //html = the server response html code
 
-				if(html == 1){
+                //total_item(); 
 
-					swal('success','voucher accepted','success');
+                if (html == 1) {
 
-					setTimeout(function(){
+                    swal('success', 'voucher accepted', 'success');
 
-						location.reload();
+                    setTimeout(function() {
 
-					},500); 
+                        location.reload();
 
-				}else if(html==2){
+                    }, 500);
 
-					swal('failed','you already have a voucher','warning');
+                } else if (html == 2) {
 
-				}else if(html==3){
+                    swal('failed', 'you already have a voucher', 'warning');
 
-					swal('failed','you already use this voucher','warning');
+                } else if (html == 3) {
 
-				}else{
+                    swal('failed', 'you already use this voucher', 'warning');
 
-					swal('failed','enter a valid voucher','error');
+                } else {
 
-				}
+                    swal('failed', 'enter a valid voucher', 'error');
 
-			}
+                }
 
-		});
+            }
 
-	});
+        });
 
+    });
 
 
-	$(".remove_voucher").click(function(){
 
-		var code = $(this).attr('val');
+    $(".remove_voucher").click(function() {
 
-		$.ajax({
+        var code = $(this).attr('val');
 
-			type	: "POST",
+        $.ajax({
 
-			url		: "/shopcart-ajax/remove_voucher",
+            type: "POST",
 
-			data	: {"code": code},
+            url: "/shopcart-ajax/remove_voucher",
 
-			beforeSend:  function() {
+            data: {
+                "code": code
+            },
 
-				//$('.loading2').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
+            beforeSend: function() {
 
-			},
+                //$('.loading2').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
 
-			success: function(html){//html = the server response html code
+            },
 
-				//total_item(); 
+            success: function(html) { //html = the server response html code
 
-				if(html == 1){
+                //total_item(); 
 
-					swal('success','voucher removed','success');
+                if (html == 1) {
 
-					setTimeout(function(){
+                    swal('success', 'voucher removed', 'success');
 
-						location.reload();
+                    setTimeout(function() {
 
-					},500); 
+                        location.reload();
 
-				}
+                    }, 500);
 
-			}
+                }
 
-		});
+            }
 
-	});
+        });
 
+    });
 
 
-	$(".get_ongkir").click(function(){
 
-		var val = $(this).attr('value');
+    $(".get_ongkir").click(function() {
 
-		$.ajax({
+        var val = $(this).attr('value');
 
-			type	: "POST",
+        $.ajax({
 
-			url		: "/shopcart-ajax/get_ongkir",
+            type: "POST",
 
-			data	: {"type": val},
+            url: "/shopcart-ajax/get_ongkir",
 
-			beforeSend:  function() {
+            data: {
+                "type": val
+            },
 
-				//$('.loading2').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
+            beforeSend: function() {
 
-			},
+                //$('.loading2').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
 
-			success: function(html){//html = the server response html code
+            },
 
-				if(html == 1){
+            success: function(html) { //html = the server response html code
 
-					location.reload();
+                if (html == 1) {
 
-				}
+                    location.reload();
 
-			}
+                }
 
-		});
+            }
 
-	});
+        });
 
-	
+    });
 
-	$('form#form_cart').validate({
 
-		rules: {
 
+    $('form#form_cart').validate({
 
+        rules: {
 
-		},
 
-		messages: {
 
-			
+        },
 
-		},
+        messages: {
 
-		errorPlacement: function(error, element){
 
-			//error.insertBefore(element);
 
-			error.insertAfter(element);
+        },
 
-		},
+        errorPlacement: function(error, element) {
 
-		submitHandler:function(form){
+            //error.insertBefore(element);
 
-			var id_product_detail = $('#ukuran_size').attr('value');
+            error.insertAfter(element);
 
-			
+        },
 
-			if(id_product_detail == ''){
+        submitHandler: function(form) {
 
-				swal({
+            var id_product_detail = $('#ukuran_size').attr('value');
 
-					title: "Error",
 
-					text: "Please Select Size",
 
-					type: "warning",
+            if (id_product_detail == '') {
 
-					confirmButtonColor: '#DD6B55',
+                swal({
 
-					confirmButtonText: "OK",
+                        title: "Error",
 
-					closeOnConfirm: true
+                        text: "Please Select Size",
 
-				},
+                        type: "warning",
 
-				function(isConfirm){
+                        confirmButtonColor: '#DD6B55',
 
-				});
+                        confirmButtonText: "OK",
 
-			}else{
+                        closeOnConfirm: true
 
-				$(".imgload").removeAttr("style");
+                    },
 
-				var formData = new FormData($("form#form_cart")[0]);
+                    function(isConfirm) {
 
-				$.ajax({
+                    });
 
-					url:'/shopcart-ajax/add',
+            } else {
 
-					type:'POST',
+                $(".imgload").removeAttr("style");
 
-					data:formData,
+                var formData = new FormData($("form#form_cart")[0]);
 
-					dataType:'HTML',
+                $.ajax({
 
-					contentType:false,
+                    url: '/shopcart-ajax/add',
 
-					processData:false,
+                    type: 'POST',
 
-					cache:false,
+                    data: formData,
 
-					success:function(html){
+                    dataType: 'HTML',
 
-						total_item();
+                    contentType: false,
 
-						var arr_msg = html.split('#');
+                    processData: false,
 
-						swal(arr_msg[0], arr_msg[1],arr_msg[2]);
+                    cache: false,
 
-					}
+                    success: function(html) {
 
-				});
+                        total_item();
 
-			}
+                        var arr_msg = html.split('#');
 
-		}
+                        swal(arr_msg[0], arr_msg[1], arr_msg[2]);
 
-	});
+                    }
 
+                });
 
+            }
 
-	//up and down qty
+        }
 
-	/*$( ".quantity_number" ).blur(function() {
+    });
 
-		var new_qty = this.value;
 
-		var item_id = $(this).attr('record');
 
-		$.ajax({//Make the Ajax Request
+    //up and down qty
 
-			type	: "POST",
+    /*$( ".quantity_number" ).blur(function() {
 
-			url		: "/shopcart-ajax/update",
+    	var new_qty = this.value;
 
-			data	: {"item_id": item_id, "new_qty": new_qty},
+    	var item_id = $(this).attr('record');
 
-			beforeSend:  function() {
+    	$.ajax({//Make the Ajax Request
 
-				//$('.loading2').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
+    		type	: "POST",
 
-			},
+    		url		: "/shopcart-ajax/update",
 
-			success: function(html){//html = the server response html code
+    		data	: {"item_id": item_id, "new_qty": new_qty},
 
-				total_item();
+    		beforeSend:  function() {
 
-				var arr_msg = html.split('#');
+    			//$('.loading2').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
 
-				/*swal(arr_msg[0], arr_msg[1]);
+    		},
 
-				setTimeout(function(){
+    		success: function(html){//html = the server response html code
 
-					location.reload();
+    			total_item();
 
-				},500);
+    			var arr_msg = html.split('#');
 
-				swal({
+    			/*swal(arr_msg[0], arr_msg[1]);
 
-					title: arr_msg[0],
+    			setTimeout(function(){
 
+    				location.reload();
 
+    			},500);
 
-					text: arr_msg[1],
+    			swal({
 
-					type: arr_msg[2],
+    				title: arr_msg[0],
 
-					confirmButtonText: "OK",
 
-					closeOnConfirm: true,
 
-				},
+    				text: arr_msg[1],
 
-				function(isConfirm){
+    				type: arr_msg[2],
 
-					if (isConfirm){
+    				confirmButtonText: "OK",
 
-						location.reload();
+    				closeOnConfirm: true,
 
-					}
+    			},
 
-				});
+    			function(isConfirm){
 
+    				if (isConfirm){
 
+    					location.reload();
 
-				$("#quantity_product-"+item_id).val(html);
+    				}
 
-			}
+    			});
 
-		});
 
 
+    			$("#quantity_product-"+item_id).val(html);
 
-	});*/
+    		}
 
+    	});
 
 
-	//up and down qty
 
-	$( ".btn-add" ).click(function() {
+    });*/
 
-		var item_id = $(this).attr('id');
 
-		var new_qty = parseInt($('#quantity_product-'+item_id).val());
 
-		var hasil_jumlah = new_qty+1;
+    //up and down qty
 
-		
+    $(".btn-add").click(function() {
 
-		$.ajax({//Make the Ajax Request
+        var item_id = $(this).attr('id');
 
-			type	: "POST",
+        var new_qty = parseInt($('#quantity_product-' + item_id).val());
 
-			url		: "/shopcart-ajax/btn_add",
+        var hasil_jumlah = new_qty + 1;
 
-			data	: {"item_id": item_id, "new_qty": hasil_jumlah},
 
-			beforeSend:  function() {
 
-				//$('.loading2').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
+        $.ajax({ //Make the Ajax Request
 
-			},
+            type: "POST",
 
-			success: function(html){//html = the server response html code
+            url: "/shopcart-ajax/btn_add",
 
-				total_item();
+            data: {
+                "item_id": item_id,
+                "new_qty": hasil_jumlah
+            },
 
-				var arr_msg = html.split('#');
+            beforeSend: function() {
 
-				
+                //$('.loading2').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
 
-				swal({
+            },
 
-					title: arr_msg[0],
+            success: function(html) { //html = the server response html code
 
-					text: arr_msg[1],
+                total_item();
 
-					type: arr_msg[2],
+                var arr_msg = html.split('#');
 
-					confirmButtonText: "OK",
 
-					closeOnConfirm: true,
 
-				},
+                swal({
 
-				function(isConfirm){
+                        title: arr_msg[0],
 
-					if (isConfirm){
+                        text: arr_msg[1],
 
-						location.reload();
+                        type: arr_msg[2],
 
-					}
+                        confirmButtonText: "OK",
 
-				});
+                        closeOnConfirm: true,
 
+                    },
 
+                    function(isConfirm) {
 
-				//$("#quantity_product-"+item_id).val(html);
+                        if (isConfirm) {
 
-			}
+                            location.reload();
 
-		});
+                        }
 
+                    });
 
 
-	});
 
+                //$("#quantity_product-"+item_id).val(html);
 
+            }
 
-	$( ".btn-min" ).click(function() {
+        });
 
-		var item_id = $(this).attr('id');
 
-		var new_qty = parseInt($('#quantity_product-'+item_id).val());
 
-		var hasil_jumlah = new_qty-1;
+    });
 
-		
 
-		$.ajax({//Make the Ajax Request
 
-			type	: "POST",
+    $(".btn-min").click(function() {
 
-			url		: "/shopcart-ajax/btn_min",
+        var item_id = $(this).attr('id');
 
-			data	: {"item_id": item_id, "new_qty": hasil_jumlah},
+        var new_qty = parseInt($('#quantity_product-' + item_id).val());
 
-			beforeSend:  function() {
+        var hasil_jumlah = new_qty - 1;
 
-				//$('.loading2').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
 
-			},
 
-			success: function(html){//html = the server response html code
+        $.ajax({ //Make the Ajax Request
 
-				total_item();
+            type: "POST",
 
-				var arr_msg = html.split('#');
+            url: "/shopcart-ajax/btn_min",
 
-				
+            data: {
+                "item_id": item_id,
+                "new_qty": hasil_jumlah
+            },
 
-				swal({
+            beforeSend: function() {
 
-					title: arr_msg[0],
+                //$('.loading2').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
 
-					text: arr_msg[1],
+            },
 
-					type: arr_msg[2],
+            success: function(html) { //html = the server response html code
 
-					confirmButtonText: "OK",
+                total_item();
 
-					closeOnConfirm: true,
+                var arr_msg = html.split('#');
 
-				},
 
-				function(isConfirm){
 
-					if (isConfirm){
+                swal({
 
-						location.reload();
+                        title: arr_msg[0],
 
-					}
+                        text: arr_msg[1],
 
-				});
+                        type: arr_msg[2],
 
+                        confirmButtonText: "OK",
 
+                        closeOnConfirm: true,
 
-				//$("#quantity_product-"+item_id).val(html);
+                    },
 
-			}
+                    function(isConfirm) {
 
-		});
+                        if (isConfirm) {
 
+                            location.reload();
 
+                        }
 
-	});
+                    });
 
-	
 
-	$(".remove_form_cart").click(function(e){
 
-		var item_id = $(this).attr('id');
+                //$("#quantity_product-"+item_id).val(html);
 
-		swal({
+            }
 
-			title: "Are You Sure?",
+        });
 
-			text: "You will not be able to recover this record!",
 
-			type: "warning",
 
-			showCancelButton: true,
+    });
 
-			confirmButtonColor: '#DD6B55',
 
-			confirmButtonText: "delete",
 
-			cancelButtonText: "cancel",
+    $(".remove_form_cart").click(function(e) {
 
-			closeOnConfirm: false,
+        var item_id = $(this).attr('id');
 
-			closeOnCancel: false
+        swal({
 
-		},
+                title: "Are You Sure?",
 
-		function(isConfirm){
+                text: "You will not be able to recover this record!",
 
-			if (isConfirm){
+                type: "warning",
 
-				$.post( "/shopcart-ajax/delete", { item_id: item_id}, function( data ) {
+                showCancelButton: true,
 
-					if(data==1){
+                confirmButtonColor: '#DD6B55',
 
-						swal("Success", "Item Deleted Successfully", "success");
+                confirmButtonText: "delete",
 
-						var notif = data.split('#');
+                cancelButtonText: "cancel",
 
-						total_item();
+                closeOnConfirm: false,
 
-						$("#record_"+item_id).fadeOut();	
+                closeOnCancel: false
 
-						setTimeout(function(){
+            },
 
-							location.reload();
+            function(isConfirm) {
 
-						},500); 
+                if (isConfirm) {
 
-					}else if(data==2){
+                    $.post("/shopcart-ajax/delete", {
+                        item_id: item_id
+                    }, function(data) {
 
-						var notif = data.split('#');
+                        if (data == 1) {
 
-						total_item();
+                            swal("Success", "Item Deleted Successfully", "success");
 
-						swal("Success", "Item Deleted Successfully", "success");
+                            var notif = data.split('#');
 
-						location.reload();
+                            total_item();
 
-					}else{
+                            $("#record_" + item_id).fadeOut();
 
-						swal("Failed","item Delete Failed", "warning");	
+                            setTimeout(function() {
 
-					} 
+                                location.reload();
 
-				});
+                            }, 500);
 
-			} else {
+                        } else if (data == 2) {
 
-				swal("Failed", "fail to delete record", "error");
+                            var notif = data.split('#');
 
-			}
+                            total_item();
 
-		});
+                            swal("Success", "Item Deleted Successfully", "success");
 
-		e.preventDefault(); 
+                            location.reload();
 
-	});
+                        } else {
 
+                            swal("Failed", "item Delete Failed", "warning");
 
+                        }
 
-	function total_item(){
+                    });
 
-		$.ajax({//Make the Ajax Request
+                } else {
 
-			type	: "POST",
+                    swal("Failed", "fail to delete record", "error");
 
-			url		: "/shopcart-ajax/get_total",
+                }
 
-			data	: {"token": 'token'},
+            });
 
-			beforeSend:  function() {
+        e.preventDefault();
 
-				//$('.loading2').fadeIn().html('<img src="/web/images/loading.gif" />');//Loading image during the Ajax Request
+    });
 
-			},
 
-			success: function(html){//html = the server response html code
 
-				//alert(html);
+    function total_item() {
 
-				$(".totalitem").html(html);
+        $.ajax({ //Make the Ajax Request
 
-			}
+            type: "POST",
 
-		});
+            url: "/shopcart-ajax/get_total",
 
-	}
+            data: {
+                "token": 'token'
+            },
+
+            beforeSend: function() {
+
+                //$('.loading2').fadeIn().html('<img src="/images/loading.gif" />');//Loading image during the Ajax Request
+
+            },
+
+            success: function(html) { //html = the server response html code
+
+                //alert(html);
+
+                $(".totalitem").html(html);
+
+            }
+
+        });
+
+    }
 
 });
-

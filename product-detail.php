@@ -522,7 +522,7 @@ $pages_product_bordir = global_select_single("pages","*","id = 2");
 			zoomWindowOffety:0,
 			borderSize:0,
 			zoomWindowFadeIn: 300, zoomWindowFadeOut: 30, lensFadeIn: 300, lensFadeOut: 300,
-			loadingIcon: '/web/images/spinner.gif'
+			loadingIcon: '/images/spinner.gif'
 		});
 	});
 	$(window).bind("resize", function(){ // scroll event

@@ -62,7 +62,7 @@ function seo_page($id){
 		$seo_keyword 		= $seoitem['seo_keyword']; 
 		$seo_description 	= $seoitem['seo_description'];
 	}
-	$og_image = 'http://http://klassiqueuniform.com/web/images/klassique/klassique-logo.png';
+	$og_image = 'http://http://klassiqueuniform.com/images/klassique/klassique-logo.png';
 	if($base_link[2] == 'product-detail'){
 		$url_page 			= $base_link[3];
 		$data_product 		= global_select_single("product","*","urlpage = '".$url_page."'");

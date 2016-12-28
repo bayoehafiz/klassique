@@ -204,7 +204,7 @@ function table_item($token,$curr_lang){
 				</td>
 				<td class="product-thumbnail hidden-xs">
 					<a href="#">
-						<img width="100" height="150" src="/web/images/klassique/product/thumb1.png" alt="Product-1"/>
+						<img width="100" height="150" src="/images/klassique/product/thumb1.png" alt="Product-1"/>
 					</a>
 				</td>
 				<td class="product-name">
