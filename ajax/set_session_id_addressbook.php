@@ -1,0 +1,1 @@
+<?php@session_start();$_SESSION['id_addressbook'] = $_POST['id'];echo "session id = ".$_SESSION['id_addressbook'];?>

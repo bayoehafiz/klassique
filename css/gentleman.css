@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Gentleman300';
+  src: url('../fonts/gentleman-300-extralight-webfont.eot');
+  src: url('../fonts/gentleman-300-extralight-webfont.eot?#iefix') format('embedded-opentype'), 
+  		url('../fonts/gentleman-300-extralight-webfont.woff2') format('woff2'),
+  		url('../fonts/gentleman-300-extralight-webfont.woff') format('woff'),
+  		url('../fonts/gentleman-300-extralight-webfont.ttf') format('truetype'),
+  		url('../fonts/gentleman-300-extralight-webfont.svg#glyphicons_halflingsregular') format('svg');
+}
+@font-face {
+  font-family: 'Gentleman400';
+  src: url('../fonts/gentleman-400-light-webfont.eot');
+  src: url('../fonts/gentleman-400-light-webfont.eot?#iefix') format('embedded-opentype'), 
+  		url('../fonts/gentleman-400-light-webfont.woff2') format('woff2'),
+  		url('../fonts/gentleman-400-light-webfont.woff') format('woff'),
+  		url('../fonts/gentleman-400-light-webfont.ttf') format('truetype'),
+  		url('../fonts/gentleman-400-light-webfont.svg#glyphicons_halflingsregular') format('svg');
+}
+@font-face {
+  font-family: 'Gentleman600';
+  src: url('../fonts/gentleman-600-regular-webfont.eot');
+  src: url('../fonts/gentleman-600-regular-webfont.eot?#iefix') format('embedded-opentype'), 
+  		url('../fonts/gentleman-600-regular-webfont.woff2') format('woff2'),
+  		url('../fonts/gentleman-600-regular-webfont.woff') format('woff'),
+  		url('../fonts/gentleman-600-regular-webfont.ttf') format('truetype'),
+  		url('../fonts/gentleman-600-regular-webfont.svg#glyphicons_halflingsregular') format('svg');
+}
+@font-face {
+  font-family: 'Gentleman800';
+  src: url('../fonts/gentleman-800-bold-webfont.eot');
+  src: url('../fonts/gentleman-800-bold-webfont.eot?#iefix') format('embedded-opentype'), 
+  		url('../fonts/gentleman-800-bold-webfont.woff2') format('woff2'),
+  		url('../fonts/gentleman-800-bold-webfont.woff') format('woff'),
+  		url('../fonts/gentleman-800-bold-webfont.ttf') format('truetype'),
+  		url('../fonts/gentleman-800-bold-webfont.svg#glyphicons_halflingsregular') format('svg');
+}

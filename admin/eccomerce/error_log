@@ -1,0 +1,5 @@
+[22-Feb-2016 17:42:22 Asia/Jakarta] PHP Fatal error:  Call to undefined function print_block() in /home/desain/public_html/klassique/web/admin/eccomerce/detail_order.php on line 143
+[01-Mar-2016 18:40:34 Asia/Jakarta] PHP Warning:  require(../../../config/webconfig-parameters.php): failed to open stream: No such file or directory in /home/desain/public_html/klassique/web/admin/eccomerce/email_orderan/confirm-payment-email-order.php on line 3
+[01-Mar-2016 18:40:34 Asia/Jakarta] PHP Fatal error:  require(): Failed opening required '../../../config/webconfig-parameters.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/desain/public_html/klassique/web/admin/eccomerce/email_orderan/confirm-payment-email-order.php on line 3
+[02-Mar-2016 11:26:23 Asia/Jakarta] PHP Parse error:  syntax error, unexpected 'require' (T_REQUIRE) in /home/desain/public_html/klassique/web/admin/eccomerce/email_orderan/confirm-emaildeliveryorder.php on line 3
+[02-Mar-2016 11:26:26 Asia/Jakarta] PHP Parse error:  syntax error, unexpected 'require' (T_REQUIRE) in /home/desain/public_html/klassique/web/admin/eccomerce/email_orderan/confirm-emaildeliveryorder.php on line 3
